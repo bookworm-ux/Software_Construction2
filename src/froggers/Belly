@@ -1,0 +1,52 @@
+package froggers;
+
+import java.awt.Color;
+
+public class Belly {
+   
+    private int width;  // Width of the belly
+    private int height; // Height of the belly
+    private Color color;
+    
+    public Belly(int bodyWidth, int bodyHeight) {
+        // Set the width and height of the belly to be a fraction of the body's width and height
+        this.width = bodyWidth; // Adjusted to 3/4 of the body's width
+        this.height = bodyHeight; // Adjusted to 3/4 of the body's height
+    }
+
+    public void drawAt(int left, int bottom) {
+    	 // Calculate the position to draw the belly
+        //int bellyLeft = left + (width / 2); // Center the belly horizontally within the body
+        //int bellyBottom = bottom - height; // Draw the belly at the bottom of the body
+
+        // Draw the belly as an oval
+        Drawing.pen().setColor(Color.YELLOW); // Set the color of the belly
+        Drawing.pen().drawOval(left, bottom, width, height); // Draw the belly as an oval
+        Drawing.pen().fillOval(left, bottom, width, height); // Draw the filled oval
+    	
+    	
+    	/*
+        // Draw the belly as an oval
+    	Drawing.pen().setColor(Color.YELLOW); //the outer line
+        Drawing.pen().drawOval(left, height, width, height);
+        Drawing.pen().fillOval(left, height, width, height); // Draw the body as a filled oval
+*/
+    	
+    	
+       /* Drawing.pen().setColor(color); // Set the color of the belly
+        Drawing.pen().fillOval(left, bottom-height, width, height); // Draw the filled oval*/
+    }
+
+	public void setColor(Color color) {
+		this.color = color;
+		}
+	
+	public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+	}
