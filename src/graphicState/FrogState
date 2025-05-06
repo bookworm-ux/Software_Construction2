@@ -1,0 +1,39 @@
+package graphicState;
+
+import froggers.Scene;
+
+public class FrogState extends State {
+	
+	private static FrogState instance;
+	
+	private FrogState(Scene context) {
+		this.context = context;
+		frogs = this;
+	}
+	
+	public static FrogState getInstance(Scene context) {
+		if (instance == null) {
+		  instance = new FrogState(context);
+		}
+		return instance;
+	}
+
+	@Override
+	public State drawFrogs() {
+		context.generateFrogs();
+		return this;
+	}
+
+	@Override
+	public State drawHats() {
+		context.generateRandomHats();
+		return HatState.getInstance(context);
+	}
+
+	@Override
+	public State drawScene() {
+		context.generateFrogs();
+		context.generateRandomHats();
+		return SceneState.getInstance(context);
+	}
+}
